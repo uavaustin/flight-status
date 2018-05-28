@@ -1,0 +1,2 @@
+defmodule FlightStatus do
+end
