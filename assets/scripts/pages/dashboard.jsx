@@ -2,6 +2,8 @@ import React from 'react';
 
 import mapboxgl from 'mapbox-gl';
 
+mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
+
 class Map extends React.Component {
   componentDidMount() {
     this.map = new mapboxgl.Map({
