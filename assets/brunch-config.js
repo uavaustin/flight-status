@@ -19,7 +19,8 @@ exports.config = {
 
   plugins: {
     babel: {
-      presets: ['latest', 'react'],
+      presets: ['env', 'react'],
+      plugins: [['inline-dotenv', { path: '../.env' }]],
       ignore: [/vendor/]
     },
     processors: [
