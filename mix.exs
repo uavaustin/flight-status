@@ -7,7 +7,8 @@ defmodule FlightStatus.Mixfile do
       version: "0.2.0-dev",
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env),
-      compilers: [:phoenix] ++ Mix.compilers,
+      compilers: compilers(Mix.env),
+      build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
       deps: deps()
     ]
@@ -22,6 +23,9 @@ defmodule FlightStatus.Mixfile do
 
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_),     do: ["lib"]
+
+  defp compilers(:prod), do: [:phoenix] ++ Mix.compilers ++ [:brunch]
+  defp compilers(_),      do: [:phoenix] ++ Mix.compilers
 
   defp deps do
     [
