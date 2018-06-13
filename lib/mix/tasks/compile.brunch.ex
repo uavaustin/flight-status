@@ -10,6 +10,7 @@ defmodule Mix.Tasks.Compile.Brunch do
 
     :ok = _install(assets_dir)
     :ok = _build(assets_dir)
+    :ok = _digest()
   end
 
   # Run `npm install` if there isn't a `node_modules` folder.
@@ -36,6 +37,15 @@ defmodule Mix.Tasks.Compile.Brunch do
         0     -> :ok
         other -> {:error,  other}
       end
+  end
+
+  # Digests the source with mix phx.digest if in prod.
+  defp _digest() do
+    if Mix.env == :prod do
+      Mix.Tasks.Phx.Digest.run([])
+    else
+      :ok
+    end
   end
 
   # Execute a command in the shell.
