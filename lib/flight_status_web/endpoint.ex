@@ -5,7 +5,7 @@ defmodule FlightStatusWeb.Endpoint do
 
   # Serve at "/" the static files from "priv/static" directory.
   plug Plug.Static,
-    at: "/", from: :flight_status, gzip: false,
+    at: "/", from: :flight_status, gzip: true,
     only: ~w(
       fonts images style.css style.css.map bundle.js bundle.js.map app.html
     )
